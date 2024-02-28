@@ -15,7 +15,7 @@ searchInput.addEventListener("input",function(){
 //125e9728090f480397e175014240201
 getData('cairo'); 
 async function getData(city){
-    let data=await fetch(`http://api.weatherapi.com/v1/forecast.json?key=125e9728090f480397e175014240201&q=${city}&days=3`);
+    let data=await fetch(`https://api.weatherapi.com/v1/forecast.json?key=125e9728090f480397e175014240201&q=${city}&days=3`);
     let weather= await data.json()
     displayWeather(weather);
 }
