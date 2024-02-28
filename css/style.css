@@ -1,0 +1,54 @@
+body{
+ background-color: rgb(30,32,43);
+    
+}
+.nav-link{
+    color: white;
+    border: 1px solid transparent ;
+    border-radius: 20px;
+    transition: all 0.5s;
+    padding: 10px 20px;
+}
+.navbar-nav .nav-link.active , .nav-link:hover{
+    color:#009AD8 ;
+    border: 1px solid #009AD8 ;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.nav-item{
+    padding-inline: 1.25rem;
+}
+::placeholder{
+    color: gray !important;
+}
+input{
+    background-color:rgb(30,32,43) !important;
+    
+    
+}
+.btn{
+    transform: translatey(-50%);
+}
+section#home{
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+}
+.card1 .card-footer{
+    background-color:hsl(231, 18%, 20%) ;
+}
+.card1 .card-body{
+    background-color:hsl(231, 18%, 25%) ;
+}
+.card1 i{
+   padding: 5px;
+   color: gray;
+}
+.card1 span{
+    padding-inline: 5px;
+}
+.card2 .card-footer{
+    background-color:hsl(231, 18%, 15%) ;
+}
+.card2 .card-body{
+    background-color:hsl(231, 18%, 20%) ;
+}
