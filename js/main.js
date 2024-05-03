@@ -17,7 +17,11 @@ let Today=document.querySelector('#today h6');
 let Tommorow=document.querySelector('#tommorow h6');
 let DayAfterTommorow=document.querySelector('#dayafterTommorow h6');
 let InputSearch=document.querySelector("input");
+let TempPerHoursDivs=document.querySelectorAll('.owl-carousel .tempperhour');
 
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+  });
 async function getWeather(endPoint,city){
    
     let request=await fetch(`${baseURL}${endPoint}?${APIKey}&q=${city}&days=3`);
@@ -37,13 +41,13 @@ function getPhotoBasedOnDegree(temp){
     let src='';
     switch(true){
         case (temp < 20):
-            src='../images/rainy.png'
+            src='./images/rainy.png'
             break;
         case (temp >= 20 && temp <= 27):
-            src='../images/sunnywithclouds.png'
+            src='./images/sunnywithclouds.png'
             break;
         default:
-            src='../images/sunny.png'
+            src='./images/sunny.png'
             break;    
     }
     return src;
@@ -52,10 +56,10 @@ function getPhotoBasedOnDegree(temp){
 function SetSuitableBackGround(hour){
     if(hour >= 6 && hour <=18){
         
-        document.querySelector('.container').style.backgroundImage='url("../images/daygif.gif")';
+        document.querySelector('.container').style.backgroundImage='url("./images/daygif.gif")';
     }else
     {
-        document.querySelector('.container').style.backgroundImage='url("../images/nightgif.gif")';
+        document.querySelector('.container').style.backgroundImage='url("./images/nightgif.gif")';
     }
 
 }
@@ -81,8 +85,28 @@ function DisplayWeatherData()
     MinDegree.innerHTML=data.forecast.forecastday[0].day.mintemp_c;
     Humadity.innerHTML=data.current.humidity+'%';
     WindDirection.innerHTML=data.current.wind_dir;
+    createOwlCarousel(data);
     WindSpeed.innerHTML=data.current.wind_kph+'KPH';
     Today.innerHTML=data.forecast.forecastday[0].day.avgtemp_c+'°C';
     Tommorow.innerHTML=data.forecast.forecastday[1].day.avgtemp_c+'°C';
     DayAfterTommorow.innerHTML=data.forecast.forecastday[2].day.avgtemp_c+'°C';
+}
+
+
+
+function createOwlCarousel(){
+
+    let TempInHours=data.forecast.forecastday[0].hour; //array of each our with temp
+  
+    for (let index = 0; index < TempInHours.length; index++) {
+        console.log( TempPerHoursDivs[index]);
+        TempPerHoursDivs[index].innerHTML=
+      `
+      <p>${TempInHours[index].time.split(" ")[1]}</p>
+      <p>${TempInHours[index].temp_c} °C</p>
+      `;
+     
+        
+    }
+
 }
